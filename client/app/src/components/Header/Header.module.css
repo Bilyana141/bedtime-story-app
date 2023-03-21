@@ -1,0 +1,37 @@
+.header {
+    font-size: 1em;
+    height: 234px;
+    background: url(../../../public/images/time.jpg) left no-repeat;
+    background-size: cover;
+    border-bottom: 3px #67706D solid;
+    text-align: center;
+  }
+  
+  .header__mainbar {
+    
+    padding: 6px;
+    text-align: center;
+  }
+  .header__button{
+    margin-top: 210px;
+  }
+  .header__button li {
+    list-style: none;
+    display: inline-block;
+    padding: 6px 10px;
+    margin: 3px;
+  }
+  
+  .header__button a {
+    color: #f0f0f0;
+    text-decoration: none;
+    padding: 6px 10px;
+    background: #67706D;
+    border-radius: 10px;
+  }
+  
+  .header__button a:hover {
+    color: #89B0D1;
+    text-decoration: underline;
+    cursor: pointer;
+  }
