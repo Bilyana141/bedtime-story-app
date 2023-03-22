@@ -1,0 +1,44 @@
+.sidebar {
+  width: 20%;
+  float: left;
+  margin: 10px 5px;
+}
+
+.heading {
+  background: url(/public/images/h1.gif) left no-repeat;
+  padding: 10px 5px 5px 25px;
+
+  font-size: 30px;
+}
+.submit-input{
+    border:2px solid #67706D;
+    border-radius: 3px;
+    background:url(/images/back.gif);
+    padding:4px;
+    margin:0 0 4px 4px;
+    }
+    .submit-button {
+    border:2px solid #67706D;
+    border-radius: 5px;
+    padding:4px;
+    margin:0 0 4px 4px;
+    
+    background-color: #67706D;
+    color: white;
+    
+    }
+    
+    input:hover, input:focus{
+    border:1px solid#89B0D1;
+    }
+    
+    
+    textarea{
+    border:1px solid #67706D;
+    padding:4px;
+    margin:0 0 4px 4px;
+    }
+    
+    textarea:hover, textarea:focus{
+    border:1px solid #89B0D1;
+    }
