@@ -1,0 +1,113 @@
+.container{
+    background-image: url(/public/images/back.gif);
+   padding: 15px;
+}
+.text {
+    float: right;
+    width: 70%;
+    margin: 10px 5px;
+    border-top:3px #67706D solid;
+
+}
+.paragraph {
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 5px 5px 5px 0px;
+    line-height: 1.5em;
+    color: aliceblue;
+    font-size: 14px;
+}
+
+.text p {
+    padding: 5px 5px 5px 0px;
+    line-height: 1.5em;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.text a {
+    color: #67706D;
+}
+
+.text a:hover {
+    color: #800000;
+}
+
+.text ol {
+    list-style: lower-roman;
+    padding: 5px 5px 5px 25px;
+}
+
+.text img {
+    padding: 2px;
+    border: 1px solid #67706D;
+}
+
+.text img:hover {
+    border: 1px solid #89B0D1;
+}
+
+.headingHomeTemplate {
+    font-family: 'Caveat', cursive;
+    color: #CEB267;
+    font-weight: 600 bold;
+    font-size: 40px;
+    text-align: left;
+    line-height: 1.4;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+}
+
+.headingHomeTemplateSecond {
+    font-family: 'Caveat', cursive;
+    color: #CEB267;
+    font-weight: 600 bold;
+    font-size: 30px;
+    text-align: right;
+    line-height: 1.4;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    margin-bottom: 10px;
+}
+
+.headingHomeTemplateThird {
+    font-family: 'Caveat', cursive;
+    color: #CEB267;
+    font-weight: 600 bold;
+    font-size: 25px;
+    text-align: left;
+    line-height: 1.4;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+}
+
+/* first picture  */
+
+.left {
+    width: 130px;
+    float: left;
+    margin-right: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* second picture */
+
+.right {
+    width: 130px;
+    float: right;
+    margin-right: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+    
+.blockquote{
+    margin:15px 25px;
+    padding:5px;
+    border-right:3px solid #CEB267;
+    border-left:1px solid #CEB267;
+    border-top:1px solid #CEB267;
+    border-bottom:3px solid #CEB267;
+    border-radius: 6px;
+    font-family: 'Caveat',cursive;
+    font-size: 16px;
+    background-color: white;
+    }
