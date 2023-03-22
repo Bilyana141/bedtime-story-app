@@ -1,0 +1,86 @@
+.register {
+    
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    
+
+    background-image: url(/public/images/back.gif);
+    padding: 15px;
+    
+   
+  }
+  
+  .form {
+    float: center;
+    box-sizing: border-box;
+    margin: auto;
+    width: 50%;
+    padding: 30px;
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .formHeading {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+  
+  .fieldset {
+    border: none;
+    margin-bottom: 20px;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .inputUsername
+  .inputEmail
+  .inputPassword
+  .inputRePassword
+  .inputImage
+  .inputBio
+   {
+    width: 90%;
+    padding: 10px;
+    margin: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+ 
+  .button {
+    display: block;
+    margin: 0 auto;
+    background-color: #808411;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: #4CAF50;
+  }
+.anker{
+  
+    margin: 0 auto;
+    text-decoration: none;
+    font-style: italic;
+    font-size: 15px;
+    color: #67706D;
+  }
+  .question { 
+    text-align: center;
+    margin-top: 20px;
+  }
