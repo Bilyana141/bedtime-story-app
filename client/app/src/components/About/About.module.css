@@ -1,0 +1,52 @@
+.aboutHeading{
+    text-align: center;
+    font-size: 50px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    color: #CEB164;
+    font-family: 'Caveat', cursive;
+  }
+  .aboutContent{
+    background-color: #FFFFFF;
+    margin: 15px auto;
+    border-bottom:4px solid #67706D;
+    border-right: 4px solid #67706D;
+    border-top: 2px solid #67706D;
+    border-left:2px solid #67706D;
+    border-radius: 5px;
+    width: 80%;
+    height: 150px;
+    padding: 10px 20px;
+    text-align: center;
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+  }
+  .leftAbout{
+    width: 130px;
+    float: left;
+  }
+
+.contactUsSection {
+    background-color: #FFFFFF;
+    margin: 15px auto;
+    border-bottom:4px solid #67706D;
+    border-right: 4px solid #67706D;
+    border-top: 2px solid #67706D;
+    border-left:2px solid #67706D;
+    width: 90%;
+    height: 60px;
+    text-align: center;
+    font-family: 'Manrope', sans-serif;
+
+}
+ 
+.contactUsList {
+    display: inline-block;
+    padding-bottom: 15px;
+   margin: 10px 7px;
+   font-size: 17px;
+}
+.materialSymbolsOutlined{
+    font-size:24px;
+    margin-right:5px;
+}
