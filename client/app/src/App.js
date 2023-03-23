@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Routes,Route } from 'react-router-dom';
+import { Routes,Route,useNavigate } from 'react-router-dom';
 import * as storyService from './services/storyService'
 import { About } from './components/About/About';
 import { Create } from './components/Create/Create';
@@ -11,6 +11,7 @@ import { Publications } from './components/Publications/Publications';
 import { Register } from './components/Register/Register';
 
 function App() {
+  const navigate=useNavigate()
   const [story,setStories] = useState([])
   useEffect(()=>{
     storyService.getAll()
@@ -18,6 +19,14 @@ function App() {
       setStories(result)
     })
   },[])
+
+  const onCreateStorySubmit = async(data)=>{
+    const newStory = await storyService.create(data)
+    setStories(state=>[...state,newStory])
+    navigate('/publications')
+
+  }
+
   return (
     <div id="App">
       <Header/>
@@ -26,7 +35,7 @@ function App() {
          <Route path='/' element={<Home/>}/>
          <Route path='/register' element={<Register/>}/>
          <Route path='/login' element={<Login/>}/>
-         <Route path='/create' element={<Create/>}/>
+         <Route path='/create' element={<Create onCreateStorySubmit={onCreateStorySubmit}/>}/>
          <Route path='/publication' element={<Publications/>}/>
          <Route path='/about' element={<About/>} />
          </Routes> 

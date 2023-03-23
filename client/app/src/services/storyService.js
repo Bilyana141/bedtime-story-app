@@ -7,3 +7,9 @@ export const getAll =async()=>{
     return stories
  
  }
+
+ export const create = async (data)=>{
+    const result=await request.post(baseUrl,data)
+    console.log(result);
+    return result
+ }
