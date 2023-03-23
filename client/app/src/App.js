@@ -1,4 +1,6 @@
+import { useEffect, useState } from 'react';
 import { Routes,Route } from 'react-router-dom';
+import * as storyService from './services/storyService'
 import { About } from './components/About/About';
 import { Create } from './components/Create/Create';
 import { Footer } from "./components/Footer/Footer";
@@ -9,6 +11,13 @@ import { Publications } from './components/Publications/Publications';
 import { Register } from './components/Register/Register';
 
 function App() {
+  const [story,setStories] = useState([])
+  useEffect(()=>{
+    storyService.getAll()
+    .then(result=>{
+      setStories(result)
+    })
+  },[])
   return (
     <div id="App">
       <Header/>
