@@ -1,33 +1,34 @@
-.register {
-    
+.createPage{
     justify-content: center;
     align-items: center;
     width: 100%;
-    box-sizing: border-box;
     background-image: url(/public/images/back.gif);
-    padding: 15px;
-    
-   
-  }
-  
-  .form {
-    float: center;
     box-sizing: border-box;
-    margin: auto;
-    width: 50%;
-    padding: 30px;
-    margin-top: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  }
+    padding: 15px;
+   
+}
+
+.form {
+float: center;
+box-sizing: border-box;
+margin: auto;
+width: 50%;
+padding: 30px;
+border-radius: 5px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+} 
+.createHeading{
+text-align: center;
+font-size: 36px;
+margin-bottom: 30px;
+}
+.radioLabel {
+display: inline-block;
+margin-right: 5px;
+margin-left: 5px;
+}
   
-  .formHeading {
-    text-align: center;
-    font-size: 36px;
-    margin-bottom: 30px;
-  }
-  
-  .fieldset {
+.fieldset {
     border: none;
     margin-bottom: 20px;
   }
@@ -37,8 +38,7 @@
     margin-bottom: 10px;
     font-weight: bold;
   }
-  
-  .inputUsername{
+  .fairytalename{
     width: 90%;
     padding: 10px;
     margin: auto;
@@ -48,7 +48,7 @@
     margin-bottom: 10px;
     margin-left: 10px;
   }
-  .inputEmail{
+  .genre{
     width: 90%;
     padding: 10px;
     margin: auto;
@@ -58,7 +58,7 @@
     margin-bottom: 10px;
     margin-left: 10px;
   }
-  .inputPassword{
+  .author{
     width: 90%;
     padding: 10px;
     margin: auto;
@@ -68,7 +68,7 @@
     margin-bottom: 10px;
     margin-left: 10px;
   }
-  .inputRePassword{
+  .recommendedage{
     width: 90%;
     padding: 10px;
     margin: auto;
@@ -78,7 +78,7 @@
     margin-bottom: 10px;
     margin-left: 10px;
   }
-  .inputImage{
+  .imageUrl{
     width: 90%;
     padding: 10px;
     margin: auto;
@@ -88,20 +88,18 @@
     margin-bottom: 10px;
     margin-left: 10px;
   }
-  .inputBio
-   {
-    width: 90%;
-    padding: 10px;
-    margin: auto;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-  }
-  
- 
-  .button {
+  .story
+  {
+   width: 90%;
+   padding: 10px;
+   margin: auto;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   font-size: 16px;
+   margin-bottom: 10px;
+   margin-left: 10px;
+ }
+ .button {
     display: block;
     margin: 0 auto;
     background-color: #808411;
@@ -114,17 +112,6 @@
   }
   
   .button:hover {
-    background-color: #4CAF50;
+    background-color: #CEB164;
   }
-.anker{
   
-    margin: 0 auto;
-    text-decoration: none;
-    font-style: italic;
-    font-size: 15px;
-    color: #67706D;
-  }
-  .question { 
-    text-align: center;
-    margin-top: 20px;
-  }

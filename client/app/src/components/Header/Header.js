@@ -7,7 +7,8 @@ export const Header = () => {
       <div className={styles.header__mainbar}>
         <nav className={styles.header__button}>
           <li><Link to="/">Home</Link></li>
-          <li><Link to="/publication">Publications</Link></li>
+          <li><Link to="/publication">Treasures</Link></li>
+          <li><Link to="/create">Create</Link></li>
           <li><Link to="/register">Register</Link> </li>
           <li><Link to="/login">Login</Link></li>
           <li><Link to="/logout">Logout</Link></li>
