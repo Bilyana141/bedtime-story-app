@@ -8,6 +8,11 @@ export const getAll =async()=>{
  
  }
 
+ export const getOne = async(storyId)=>{
+    const result = await request.get(`${baseUrl}/${storyId}`)
+    return result
+ }
+
  export const create = async (data)=>{
     const result=await request.post(baseUrl,data)
     console.log(result);

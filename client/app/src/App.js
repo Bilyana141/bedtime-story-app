@@ -9,6 +9,7 @@ import { Home } from './components/Home/Home';
 import { Login } from './components/Login/Login';
 import { Publications } from './components/Publications/Publications';
 import { Register } from './components/Register/Register';
+import { Details } from './components/Details/Details';
 
 function App() {
   const navigate=useNavigate()
@@ -37,6 +38,7 @@ function App() {
          <Route path='/login' element={<Login/>}/>
          <Route path='/create' element={<Create onCreateStorySubmit={onCreateStorySubmit}/>}/>
          <Route path='/publication' element={<Publications stories={stories} />}/>
+         <Route path='/publication/:storyId' element={<Details/>}/>
          <Route path='/about' element={<About/>} />
          </Routes> 
        </main> 

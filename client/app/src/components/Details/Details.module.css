@@ -1,0 +1,70 @@
+.detailsPage{
+    width: 100%;
+    height: 500px;
+    margin-top: 20px;
+}
+.detailsSection {
+    background: url(/public/images/2.jpg);
+    width: 80%;
+    height:90%;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .detailsName {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 30px;
+    font-family: 'Caveat',cursive;
+    font-weight: 600 bold;
+    color: #CEB164;
+  }
+  
+  .detailsImage  {
+    position: absolute;
+    width: 50%;
+    height: 65%;
+    top: 70px;
+    right: 20px;
+    border-radius: 5px;
+    border: 1px solid #89B0D1;
+  }
+
+  .detailsContainer {
+    position: absolute;
+    margin-left: 10px;
+    left: 10px;
+    width: 40%;
+    height: 60%;
+    border-radius: 5px;
+    background: url(/public/images/paper.jpg);
+    overflow: auto;
+    padding-bottom: 20px; /* Add some padding to the bottom */
+  }
+  
+  .detailsContainerInfo {
+    padding: 10px;
+    font-family: 'Kalam', cursive;
+  }
+  .detailsContainerName {
+    padding: 10px;
+    font-family: 'Kalam', cursive;
+  }
+
+
+
+.ditailsButtonsLink {
+  display: inline-block;
+  margin: 3px;
+  padding: 5px 14px;
+  background-color: #808411;
+  color: #FFFFFF;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.detailsButtons {
+    position: relative;
+    left: 270px;
+}
