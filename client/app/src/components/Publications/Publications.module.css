@@ -5,61 +5,36 @@
     border-radius: 7px;
     background-color: #7C8612;
     }
-    .itemImg {
-        width: 50%;
-    }
     .catalogHeading {
-        font-size: 45px;
-        margin-bottom: 20px;
-        font-weight: bold;
-        font-family: 'Caveat',cursive;
-        text-align: center;
-        color: #CEB164;
-      }
-      
-      .item {
-        display: inline-block;
-        margin: 20px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        padding: 20px;
-        width: 200px;
-        height: 200px;
-        text-align: center;
-        background: url(/public/images/background.jpg) center;
-      }
-      
-      .itemImg {
-        max-width: 100%;
-        height: auto;
-      }
-      
-      .bookName {
-        font-size: 24px;
-        margin-top: 10px;
-        margin-bottom: 5px;
-        font-weight: bold;
-      }
-      
-      .author {
-        font-size: 16px;
-        color: #999;
-        margin-top: 5px;
-        margin-bottom: 10px;
-      }
-      
-      .anker {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #808411;
-        color: #FFFFFF;
-        text-decoration: none;
-        border-radius: 5px;
-        font-size: 18px;
-        font-weight: bold;
-        margin-top: 10px;
-      }
-      
-      .anker:hover {
-        background-color: #0055CC;
-      }
+      font-size: 45px;
+      margin-top: 15px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      font-family: 'Caveat',cursive;
+      text-align: center;
+      color: #CEB164;
+    }
+  .noTreasures{
+    font-size: 35px;
+    font-weight: bold;
+    font-family: 'Caveat',cursive;
+    text-align: center;
+    color: #CEB164;
+  }  
+  .beFirst{
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Caveat',cursive;
+    text-align: center;
+    color: #CEB164;
+  }
+  .clickHere{
+    font-style: italic;
+    color:#8D3025;
+    font-family: 'Caveat',cursive;
+  }
+  .clickHere:hover{
+    cursor: pointer;
+   text-decoration: underline;
+   color: white;
+  }

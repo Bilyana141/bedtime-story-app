@@ -12,7 +12,7 @@ import { Register } from './components/Register/Register';
 
 function App() {
   const navigate=useNavigate()
-  const [story,setStories] = useState([])
+  const [stories,setStories] = useState([])
   useEffect(()=>{
     storyService.getAll()
     .then(result=>{
@@ -23,7 +23,7 @@ function App() {
   const onCreateStorySubmit = async(data)=>{
     const newStory = await storyService.create(data)
     setStories(state=>[...state,newStory])
-    navigate('/publications')
+    navigate('/publication')
 
   }
 
@@ -36,7 +36,7 @@ function App() {
          <Route path='/register' element={<Register/>}/>
          <Route path='/login' element={<Login/>}/>
          <Route path='/create' element={<Create onCreateStorySubmit={onCreateStorySubmit}/>}/>
-         <Route path='/publication' element={<Publications/>}/>
+         <Route path='/publication' element={<Publications stories={stories} />}/>
          <Route path='/about' element={<About/>} />
          </Routes> 
        </main> 
