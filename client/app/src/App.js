@@ -10,6 +10,7 @@ import { Login } from './components/Login/Login';
 import { Publications } from './components/Publications/Publications';
 import { Register } from './components/Register/Register';
 import { Details } from './components/Details/Details';
+import { StoryContent } from './components/StoryContent/StoryContent';
 
 function App() {
   const navigate=useNavigate()
@@ -39,6 +40,7 @@ function App() {
          <Route path='/create' element={<Create onCreateStorySubmit={onCreateStorySubmit}/>}/>
          <Route path='/publication' element={<Publications stories={stories} />}/>
          <Route path='/publication/:storyId' element={<Details/>}/>
+         <Route path='/publication/read/:storyId' element={<StoryContent/>}/>
          <Route path='/about' element={<About/>} />
          </Routes> 
        </main> 

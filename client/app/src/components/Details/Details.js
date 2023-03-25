@@ -1,7 +1,8 @@
 import styles from './Details.module.css';
 import * as storyService from '../../services/storyService'
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom';
+
 
 export const Details =()=>{
   const { storyId } = useParams();
@@ -26,7 +27,7 @@ export const Details =()=>{
         <h3 className={styles.detailsContainerInfo}>Recommended age: {story.recommendedage}</h3>
         
          <div className={styles.ditailsButtons}>
-          <a className={styles.ditailsButtonsLink}>Read</a>
+          <Link className={styles.ditailsButtonsLink} to={`/publication/read/${story._id}`}>Read</Link>
           <a className={styles.ditailsButtonsLink}>Edit</a>
           <a className={styles.ditailsButtonsLink}>Delete</a>
         </div>

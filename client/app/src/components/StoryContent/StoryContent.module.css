@@ -1,0 +1,47 @@
+.story{
+    margin:0 auto;
+    width:740px;
+    border: 3px solid #808411;
+    border-radius: 7px;
+    }
+    .storyContent{
+       background: url(/public/images/paper.jpg);
+        margin: 0 auto;
+        width: 100%;
+        height: 100%;
+    }
+    .storyTailContainer{
+        border: 2px solid #808411;
+        background: #DECB97;
+        overflow: auto;
+    }
+    .storyTail{
+        border: 2px solid #808411;
+        padding: 10px;
+        font-size: 14px;
+        font-family: 'Manrope', sans-serif;
+    }
+    .storyHeadings{
+        font-size: 40px;
+        padding-top: 20px;
+        margin-bottom: 20px;
+        font-weight: bold;
+        font-family: 'Caveat',cursive;
+        text-align: center;
+    }
+    .detailsButtonsLink {
+        display: inline-block;
+        margin: 3px;
+        padding: 5px 14px;
+        background-color: #808411;
+        color: #FFFFFF;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 14px;
+        font-weight: bold;
+      }
+      .detailsButtons {
+          position: relative;
+          left: auto;
+      }
+      
