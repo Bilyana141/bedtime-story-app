@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Routes,Route,useNavigate } from 'react-router-dom';
-import * as storyService from './services/storyService'
+
+import * as storyService from './services/storyService';
+import { AuthContext } from './context/AuthContext';
+
+
 import { About } from './components/About/About';
 import { Create } from './components/Create/Create';
 import { Footer } from "./components/Footer/Footer";
@@ -14,7 +18,8 @@ import { StoryContent } from './components/StoryContent/StoryContent';
 
 function App() {
   const navigate=useNavigate()
-  const [stories,setStories] = useState([])
+  const [stories,setStories] = useState([]);
+  const [auth, setAuth]=useState({})
   useEffect(()=>{
     storyService.getAll()
     .then(result=>{
@@ -30,7 +35,8 @@ function App() {
   }
 
   return (
-    <div id="App">
+    <AuthContext.Provider value={contextValue}>
+   <div id="App">
       <Header/>
        <main id="main-content"> 
          <Routes> 
@@ -47,6 +53,8 @@ function App() {
       <Footer/>
       
     </div>
+    </AuthContext.Provider>
+ 
   );
 }
 
