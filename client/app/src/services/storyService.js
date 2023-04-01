@@ -13,8 +13,7 @@ export const getAll =async()=>{
     return result
  }
 
- export const create = async (data)=>{
-    const result=await request.post(baseUrl,data)
-    console.log(result);
+ export const create = async (data,token)=>{
+    const result=await request.post(baseUrl,data,token)
     return result
  }

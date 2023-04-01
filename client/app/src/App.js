@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Routes,Route,useNavigate } from 'react-router-dom';
 
 import * as storyService from './services/storyService';
+import * as authService from './services/authService'
 import { AuthContext } from './context/AuthContext';
 
 
@@ -20,20 +21,55 @@ function App() {
   const navigate=useNavigate()
   const [stories,setStories] = useState([]);
   const [auth, setAuth]=useState({})
+  
   useEffect(()=>{
     storyService.getAll()
     .then(result=>{
       setStories(result)
     })
   },[])
-
-  const onCreateStorySubmit = async(data)=>{
-    const newStory = await storyService.create(data)
+ 
+  const onCreateStorySubmit = async(data,token)=>{
+    const newStory = await storyService.create(data,token)
     setStories(state=>[...state,newStory])
     navigate('/publication')
   };
-  const contextValue={
+
+  const onLoginSubmit =async(data)=>{
+    try{
+    const result = await authService.login(data)
+    console.log(result);
+    setAuth(result)
     
+    navigate('/')
+    }catch(error){
+      //to do error
+      console.log('Problem');
+    }
+  };
+  const onRegisterSubmit = async (values) => {
+    const { confirmPassword, ...data } = values;
+    if (confirmPassword !== data.password) {
+        return;
+    }
+
+    try {
+        const result = await authService.register(data);
+        setAuth(result);
+        navigate('/');
+    } catch (error) {
+      //to do error 
+        console.log('Problem');
+    }
+};
+
+  const contextValue={
+    onLoginSubmit,
+    onRegisterSubmit,
+    userId: auth._id,
+    token:auth.accessToken,
+    //userName:auth.username,
+    email:auth.email,
   }
 
   return (
@@ -45,7 +81,7 @@ function App() {
          <Route path='/' element={<Home/>}/>
          <Route path='/register' element={<Register/>}/>
          <Route path='/login' element={<Login/>}/>
-         <Route path='/create' element={<Create onCreateStorySubmit={onCreateStorySubmit}/>}/>
+         <Route path='/create' element={<Create onCreateStorySubmit={onCreateStorySubmit.bind(null, contextValue.token)}/>}/>
          <Route path='/publication' element={<Publications stories={stories} />}/>
          <Route path='/publication/:storyId' element={<Details/>}/>
          <Route path='/publication/read/:storyId' element={<StoryContent/>}/>
