@@ -11,26 +11,26 @@ export const Register =()=>{
   
   <fieldset className={styles.fieldset}>
     
-    <label className={styles.label} for="name">Name:</label>
+    <label className={styles.label} htmlFor="name">Name:</label>
     <input className={styles.inputUsername}type="text" id="name" name="user_name"/>
     
-    <label className={styles.label}  for="mail">Email:</label>
+    <label className={styles.label}  htmlFor="mail">Email:</label>
     <input className={styles.inputEmail} type="email" id="mail" name="user_email"/>
     
-    <label className={styles.label}  for="password">Password:</label>
+    <label className={styles.label}  htmlFor="password">Password:</label>
     <input className={styles.inputPassword} type="password" id="password" name="user_password"/>
 
-    <label className={styles.label}  for="rePassword">Repeat Password:</label>
+    <label className={styles.label}  htmlFor="rePassword">Repeat Password:</label>
     <input className={styles.inputRePassword}  type="rePassword" id="rePassword" name="user_rePassword"/>
   
-    <label className={styles.label}  for="image">Image:</label>
+    <label className={styles.label}  htmlFor="image">Image:</label>
     <input className={styles.inputImage} type="text" id="image" name="user_image"/>
         
   </fieldset>
   
   <fieldset className={styles.fieldset}>
     
-    <label className={styles.label}  for="bio">Something about you :</label>
+    <label className={styles.label}  htmlFor="bio">Something about you :</label>
     <textarea className={styles.inputBio} id="bio" name="user_bio"></textarea>
   </fieldset>
   
