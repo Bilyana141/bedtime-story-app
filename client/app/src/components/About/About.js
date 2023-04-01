@@ -1,7 +1,7 @@
 import styles from './About.module.css'
 export const About = ()=>{
     return(
-        <div class="about">
+        <div className="about">
         <h1 className={styles.aboutHeading}>About Us</h1>
         <section className={styles.aboutContent}>
           <p>Make bedtime magical with Once Upon a Time </p>

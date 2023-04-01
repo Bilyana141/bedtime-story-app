@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Routes,Route,useNavigate } from 'react-router-dom';
 
 import * as storyService from './services/storyService';
@@ -16,6 +16,7 @@ import { Publications } from './components/Publications/Publications';
 import { Register } from './components/Register/Register';
 import { Details } from './components/Details/Details';
 import { StoryContent } from './components/StoryContent/StoryContent';
+import { Logout } from './components/Logout/Logout';
 
 function App() {
   const navigate=useNavigate()
@@ -63,13 +64,22 @@ function App() {
     }
 };
 
+const onLogout = async () => {
+  await authService.logout();
+
+  setAuth({});
+};
+
   const contextValue={
     onLoginSubmit,
     onRegisterSubmit,
+    onCreateStorySubmit,
+    onLogout,
     userId: auth._id,
     token:auth.accessToken,
-    //userName:auth.username,
+    username:auth.username,
     email:auth.email,
+    isAuthenticated: !!auth.accessToken,
   }
 
   return (
@@ -81,7 +91,8 @@ function App() {
          <Route path='/' element={<Home/>}/>
          <Route path='/register' element={<Register/>}/>
          <Route path='/login' element={<Login/>}/>
-         <Route path='/create' element={<Create onCreateStorySubmit={onCreateStorySubmit.bind(null, contextValue.token)}/>}/>
+         <Route path='/logout' element={<Logout />} />
+         <Route path='/create' element={<Create />}/>
          <Route path='/publication' element={<Publications stories={stories} />}/>
          <Route path='/publication/:storyId' element={<Details/>}/>
          <Route path='/publication/read/:storyId' element={<StoryContent/>}/>

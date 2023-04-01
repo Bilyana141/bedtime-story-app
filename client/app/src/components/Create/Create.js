@@ -1,10 +1,11 @@
 import styles from './Create.module.css';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 import { useForm } from '../../hooks/useForm';
 
 
-export const Create=({
-  onCreateStorySubmit,
-})=>{
+export const Create=()=>{
+const { onCreateStorySubmit } =useContext(AuthContext)
 const { values, changeHandler, onSubmit } = useForm({
   storyname:'',
   genre:'',
