@@ -22,7 +22,7 @@
     },
     "homepage": "https://github.com/softuni-practice-server/softuni-practice-server#readme",
     "dependencies": {
-        "nodemon": "^2.0.21"
+        "nodemon": "^2.0.22"
     },
     "devDependencies": {
         "@rollup/plugin-commonjs": "^17.1.0",
