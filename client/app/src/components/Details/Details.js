@@ -1,22 +1,25 @@
 import styles from './Details.module.css';
 import { storyServiceFact } from '../../services/storyService'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useService } from '../../hooks/useService';
+import { AuthContext } from '../../context/AuthContext';
 
 
 export const Details =()=>{
   const { storyId } = useParams();
+  const { userId } = useContext(AuthContext);
   const [story,setStory]=useState([]);
   const storyService = useService(storyServiceFact)
   useEffect(()=>{
     storyService.getOne(storyId)
     .then((result)=>{
-      setStory(result)
-      
+      setStory(result);
     })
+  },[storyId]);
 
-  },[storyId])
+  const isOwner = story._ownerId===userId;
+
     return(  
     <div className={styles.detailsPage}>
     <section className={styles.detailsSection}>
@@ -30,8 +33,14 @@ export const Details =()=>{
         
          <div className={styles.ditailsButtons}>
           <Link className={styles.ditailsButtonsLink} to={`/publication/read/${story._id}`}>Read</Link>
-          <a className={styles.ditailsButtonsLink}>Edit</a>
-          <a className={styles.ditailsButtonsLink}>Delete</a>
+          {isOwner &&(
+            <>
+            <Link className={styles.ditailsButtonsLink} to={`/publication/edit/${story._id}`}>Edit</Link>
+            <a className={styles.ditailsButtonsLink}>Delete</a>
+            </>
+
+          )}
+         
         </div>
         
   
