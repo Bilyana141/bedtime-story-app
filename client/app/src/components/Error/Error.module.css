@@ -1,0 +1,33 @@
+.errorBox{
+    width: 250px;
+    height: 150px;
+    border-radius: 5px;
+    border: 3px solid #7C8612; 
+    background-color: white;
+    margin: 0 auto;
+    padding: 10px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    position: absolute;
+    right: 635px;
+    top: 361px;
+
+}
+
+.errorMessage {
+    text-align: center;
+    font-size: 17px;
+    color:#7C8612;
+    padding: 25px;
+
+}
+.button {
+border-radius: 2px;
+border: 2px solid #7C8612;
+color: red;
+font-weight: bold;
+padding-right: 2px;
+padding-left: 2px;
+position: relative;
+left: 230px;
+}
