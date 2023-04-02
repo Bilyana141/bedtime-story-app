@@ -1,12 +1,14 @@
 import styles from './Details.module.css';
-import * as storyService from '../../services/storyService'
+import { storyServiceFact } from '../../services/storyService'
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useService } from '../../hooks/useService';
 
 
 export const Details =()=>{
   const { storyId } = useParams();
-  const [story,setStory]=useState([])
+  const [story,setStory]=useState([]);
+  const storyService = useService(storyServiceFact)
   useEffect(()=>{
     storyService.getOne(storyId)
     .then((result)=>{

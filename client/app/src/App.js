@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Routes,Route,useNavigate } from 'react-router-dom';
 
-import * as storyService from './services/storyService';
-import * as authService from './services/authService'
+import { storyServiceFact } from './services/storyService';
+import { authServiceFac } from './services/authService'
 import { AuthContext } from './context/AuthContext';
 
 
@@ -17,23 +17,35 @@ import { Register } from './components/Register/Register';
 import { Details } from './components/Details/Details';
 import { StoryContent } from './components/StoryContent/StoryContent';
 import { Logout } from './components/Logout/Logout';
+import { Error } from './components/Error/Error';
 
 function App() {
   const navigate=useNavigate()
   const [stories,setStories] = useState([]);
   const [auth, setAuth]=useState({})
+  const [error,setError] = useState(null)
+  const storyService=storyServiceFact(auth.accessToken);
+  const authService = authServiceFac(auth.accessToken)
   
   useEffect(()=>{
     storyService.getAll()
     .then(result=>{
       setStories(result)
     })
+    .catch(error=>{
+      setError('Failed to get story. Please try again later.')
+    })
   },[])
  
-  const onCreateStorySubmit = async(data,token)=>{
-    const newStory = await storyService.create(data,token)
+  const onCreateStorySubmit = async(data)=>{
+    try {
+      const newStory = await storyService.create(data, auth.accessToken)
     setStories(state=>[...state,newStory])
     navigate('/publication')
+    } catch (error) {
+      setError('Failed to create new story.Please try again later')
+    }
+    
   };
 
   const onLoginSubmit =async(data)=>{
@@ -44,13 +56,13 @@ function App() {
     
     navigate('/')
     }catch(error){
-      //to do error
-      console.log('Problem');
+      setError('Failed to log in. Please check your email and password.');
     }
   };
   const onRegisterSubmit = async (values) => {
     const { confirmPassword, ...data } = values;
     if (confirmPassword !== data.password) {
+      setError('Password dont match!')
         return;
     }
 
@@ -59,16 +71,24 @@ function App() {
         setAuth(result);
         navigate('/');
     } catch (error) {
-      //to do error 
-        console.log('Problem');
+      setError('Failed to register. Please try again.');
     }
 };
 
 const onLogout = async () => {
-  await authService.logout();
+  try {
+    await authService.logout();
 
-  setAuth({});
+    setAuth({});
+  } catch (error) {
+    setError('Failed to log out.Please try again!')
+  }
+
 };
+
+const closeError =()=>{
+  setError(null)
+}
 
   const contextValue={
     onLoginSubmit,
@@ -87,17 +107,20 @@ const onLogout = async () => {
    <div id="App">
       <Header/>
        <main id="main-content"> 
-         <Routes> 
-         <Route path='/' element={<Home/>}/>
-         <Route path='/register' element={<Register/>}/>
-         <Route path='/login' element={<Login/>}/>
-         <Route path='/logout' element={<Logout />} />
-         <Route path='/create' element={<Create />}/>
-         <Route path='/publication' element={<Publications stories={stories} />}/>
-         <Route path='/publication/:storyId' element={<Details/>}/>
-         <Route path='/publication/read/:storyId' element={<StoryContent/>}/>
-         <Route path='/about' element={<About/>} />
-         </Routes> 
+       {error && ( <Error message={error} closeError={closeError}/>)} 
+        <Routes> 
+        <Route path='/' element={<Home/>}/>
+        <Route path='/register' element={<Register/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/logout' element={<Logout />} />
+        <Route path='/create' element={<Create />}/>
+        <Route path='/publication' element={<Publications stories={stories} />}/>
+        <Route path='/publication/:storyId' element={<Details/>}/>
+        <Route path='/publication/read/:storyId' element={<StoryContent/>}/>
+        <Route path='/about' element={<About/>} />
+        </Routes> 
+       
+       
        </main> 
       <Footer/>
       
