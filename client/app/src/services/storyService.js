@@ -17,15 +17,20 @@ export const storyServiceFact =(token)=>{
    };
   
    const create = async (data,token)=>{
-     console.log(token);
       const result=await request.post(baseUrl,data,token)
       return result
    };
+   const edit= async(storyId,data)=>{
+      const result= request.put(`${baseUrl}/${storyId}`,data)
+      return result
+
+   }
 
    return{
       getAll,
       getOne,
       create,
+      edit,
    }
 
 }

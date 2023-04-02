@@ -18,6 +18,7 @@ import { Details } from './components/Details/Details';
 import { StoryContent } from './components/StoryContent/StoryContent';
 import { Logout } from './components/Logout/Logout';
 import { Error } from './components/Error/Error';
+import { Edit } from './components/Edit/Edit';
 
 function App() {
   const navigate=useNavigate()
@@ -78,13 +79,23 @@ function App() {
 const onLogout = async () => {
   try {
     await authService.logout();
-
     setAuth({});
   } catch (error) {
     setError('Failed to log out.Please try again!')
+
   }
 
 };
+
+const onEditPost = async(data)=>{
+  try {
+    const result = await storyService.edit(data._id,data);
+    setStories(state=>state.map(story=>story._id === data._id ? result: story));
+    navigate(`/publication/${data._id}`)
+  } catch (error) {
+    setError('Failed to edit this story.Please try again later.')
+  }
+}
 
 const closeError =()=>{
   setError(null)
@@ -94,6 +105,7 @@ const closeError =()=>{
     onLoginSubmit,
     onRegisterSubmit,
     onCreateStorySubmit,
+    onEditPost,
     onLogout,
     userId: auth._id,
     token:auth.accessToken,
@@ -114,6 +126,7 @@ const closeError =()=>{
         <Route path='/login' element={<Login/>}/>
         <Route path='/logout' element={<Logout />} />
         <Route path='/create' element={<Create />}/>
+        <Route path='/publication/edit/:storyId' element={<Edit/>}/>
         <Route path='/publication' element={<Publications stories={stories} />}/>
         <Route path='/publication/:storyId' element={<Details/>}/>
         <Route path='/publication/read/:storyId' element={<StoryContent/>}/>
