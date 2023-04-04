@@ -1,12 +1,12 @@
 import styles from './Edit.module.css';
-import { useEffect,useContext } from 'react';
-import { AuthContext } from '../../context/AuthContext';
+import { useContext, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
 import { useService } from '../../hooks/useService';
 import { storyServiceFact } from '../../services/storyService';
+import { StoryContext } from '../../context/StoryContext';
 export const Edit =()=>{
-    const { onEditPost } =useContext(AuthContext);
+  const { onEditPost } =useContext(StoryContext)
     const { storyId } =useParams();
     const storyService = useService(storyServiceFact);
     const { values,changeHandler,onSubmit,changeData} = useForm({

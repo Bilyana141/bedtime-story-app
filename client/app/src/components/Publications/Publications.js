@@ -1,10 +1,11 @@
+import { useContext } from 'react'
 import { Item } from './Item/Item'
 import styles from './Publications.module.css' 
 import { Link } from 'react-router-dom'
+import { StoryContext } from '../../context/StoryContext'
 
-export const Publications =({
-  stories,
-})=>{
+export const Publications =()=>{
+  const { stories }=useContext(StoryContext)
     return (
         <div className={styles.catalog}>
        <h2 className={styles.catalogHeading}>All treasures</h2>
