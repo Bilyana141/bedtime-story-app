@@ -23,14 +23,16 @@ export const storyServiceFact =(token)=>{
    const edit= async(storyId,data)=>{
       const result= request.put(`${baseUrl}/${storyId}`,data)
       return result
-
-   }
+   };
+   const deleteGame = (storyId)=>request.delete(`${baseUrl}/${storyId}`)
+   
 
    return{
       getAll,
       getOne,
       create,
       edit,
+      deleteGame,
    }
 
 }

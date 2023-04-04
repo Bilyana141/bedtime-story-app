@@ -26,7 +26,8 @@ export const StoryProvider=({children})=>{
       const onCreateStorySubmit = async(data)=>{
         try {
           const newStory = await storyService.create(data, authContext.token)
-        setStories(state=>[...state,newStory])
+        
+          setStories(state=>[...state,newStory])
         navigate('/publication')
         } catch (error) {
           setError('Failed to create new story.Please try again later')
@@ -41,10 +42,17 @@ export const StoryProvider=({children})=>{
         } catch (error) {
           setError('Failed to edit this story.Please try again later.')
         }
+      };
+      const onDeleteClick=async(storyId)=>{
+        await storyService.deleteGame(storyId)
+        setStories(state=>state.filter(x=>x._id !== storyId))
+        navigate('/publication')
+
       }
     const contextValue={
         onCreateStorySubmit,
         onEditPost,
+        onDeleteClick,
         stories
     } ;
     return(

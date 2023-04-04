@@ -5,10 +5,13 @@ import { useParams, Link } from 'react-router-dom';
 import { useService } from '../../hooks/useService';
 import { AuthContext } from '../../context/AuthContext';
 
+import { StoryContext } from '../../context/StoryContext';
+
 
 export const Details =()=>{
   const { storyId } = useParams();
   const { userId } = useContext(AuthContext);
+  const { onDeleteClick } =useContext(StoryContext)
   const [story,setStory]=useState([]);
   const storyService = useService(storyServiceFact)
   useEffect(()=>{
@@ -36,7 +39,7 @@ export const Details =()=>{
           {isOwner &&(
             <>
             <Link className={styles.ditailsButtonsLink} to={`/publication/edit/${story._id}`}>Edit</Link>
-            <a className={styles.ditailsButtonsLink}>Delete</a>
+            <a className={styles.ditailsButtonsLink} onClick={()=>onDeleteClick(story._id)}>Delete</a>
             </>
 
           )}
