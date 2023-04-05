@@ -58,6 +58,8 @@ const onLogout = async () => {
     userId: auth._id,
     token:auth.accessToken,
     username:auth.username,
+    bio:auth.bio,
+    image:auth.imageUrl,
     email:auth.email,
     isAuthenticated: !!auth.accessToken,
   };
