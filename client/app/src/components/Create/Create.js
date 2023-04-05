@@ -2,12 +2,14 @@ import styles from './Create.module.css';
 import { useForm } from '../../hooks/useForm';
 import { useContext } from 'react';
 import { StoryContext } from '../../context/StoryContext';
+import { ErrorContext } from '../../context/ErrorContext'; 
 
 
 export const Create=({
  
 })=>{
-  const { onCreateStorySubmit } = useContext(StoryContext)
+  const { onCreateStorySubmit } = useContext(StoryContext);
+  const { error,setError} = useContext(ErrorContext)
 
 const { values, changeHandler, onSubmit } = useForm({
   storyname:'',
@@ -18,12 +20,26 @@ const { values, changeHandler, onSubmit } = useForm({
   story:'',
 },onCreateStorySubmit)
 
+const validateForm = () => {
+  if (!values.storyname.trim() || !values.genre.trim() || !values.author.trim() || !values.recommendedage.trim() || !values.imageUrl.trim() || !values.story.trim()) {
+    setError('Please fill in all the fields.');
+    return false;
+  }
+  return true;
+};
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+  if (validateForm()) {
+    onSubmit(e);
+  }
+};
 
     return (
         <div className={styles.createPage}>
         <section className={styles.create}>
           <h1 className={styles.createHeading}>Create post</h1>
-          <form className={styles.form} method="post" onSubmit={onSubmit} >
+          <form className={styles.form} method="post" onSubmit={handleSubmit} >
             <fieldset className={styles.fieldset}>
               <label className={styles.label} htmlFor="storyname">Name:</label>
               <input 

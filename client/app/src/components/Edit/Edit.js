@@ -5,10 +5,12 @@ import { useForm } from '../../hooks/useForm';
 import { useService } from '../../hooks/useService';
 import { storyServiceFact } from '../../services/storyService';
 import { StoryContext } from '../../context/StoryContext';
+import { ErrorContext } from '../../context/ErrorContext'; 
 export const Edit =()=>{
   const { onEditPost } =useContext(StoryContext)
     const { storyId } =useParams();
     const storyService = useService(storyServiceFact);
+    const { error,setError} = useContext(ErrorContext)
     const { values,changeHandler,onSubmit,changeData} = useForm({
         _id:'',
         storyname:'',
@@ -18,6 +20,21 @@ export const Edit =()=>{
         imageUrl:'',
         story:'',
     },onEditPost);
+
+    const validateForm = () => {
+      if (!values.storyname.trim() || !values.genre.trim() || !values.author.trim() || !values.recommendedage.trim() || !values.imageUrl.trim() || !values.story.trim()) {
+        setError('Please fill in all the fields.');
+        return false;
+      }
+      return true;
+    };
+    
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      if (validateForm()) {
+        onSubmit(e);
+      }
+    };
 
     useEffect(()=>{
         storyService.getOne(storyId)
@@ -30,7 +47,7 @@ export const Edit =()=>{
         <div className={styles.editPage}>
         <section className={styles.edit}>
           <h1 className={styles.editHeading}>Edit post</h1>
-          <form className={styles.form} method="post" onSubmit={onSubmit}  >
+          <form className={styles.form} method="post" onSubmit={handleSubmit}  >
             <fieldset className={styles.fieldset}>
               <label className={styles.label} htmlFor="storyname">Name:</label>
               <input

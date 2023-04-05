@@ -24,7 +24,7 @@ export const storyServiceFact =(token)=>{
       const result= request.put(`${baseUrl}/${storyId}`,data)
       return result
    };
-   const deleteGame = (storyId)=>request.delete(`${baseUrl}/${storyId}`)
+   const deleteStory = (storyId)=>request.delete(`${baseUrl}/${storyId}`)
    
 
    return{
@@ -32,7 +32,7 @@ export const storyServiceFact =(token)=>{
       getOne,
       create,
       edit,
-      deleteGame,
+      deleteStory,
    }
 
 }

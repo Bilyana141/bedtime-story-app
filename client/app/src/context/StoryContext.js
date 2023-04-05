@@ -44,7 +44,7 @@ export const StoryProvider=({children})=>{
         }
       };
       const onDeleteClick=async(storyId)=>{
-        await storyService.deleteGame(storyId)
+        await storyService.deleteStory(storyId)
         setStories(state=>state.filter(x=>x._id !== storyId))
         navigate('/publication')
 

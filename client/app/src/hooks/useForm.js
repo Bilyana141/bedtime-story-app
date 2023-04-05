@@ -15,15 +15,15 @@ export const useForm = (initialValues, onSubmitHandler)=>{
 
     const changeData = (newData) => {
        
-        // const initialKeys = Object.keys(initialValues);
-        // const newKeys = Object.keys(newData);
-        // const keysMatch = initialKeys.every((key) => newKeys.includes(key));
+        const initialKeys = Object.keys(initialValues);
+        const newKeys = Object.keys(newData);
+        const keysMatch = initialKeys.every((key) => newKeys.includes(key));
       
-        // if (keysMatch) {
-        //   setValues(newData);
-        // } else {
-        //   return
-        // }
+        if (keysMatch) {
+          setValues(newData);
+        } else {
+          return
+        }
         setValues(newData);
       };
 
