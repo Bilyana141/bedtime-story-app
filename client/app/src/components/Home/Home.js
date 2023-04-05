@@ -1,4 +1,5 @@
 import styles from "./Home.module.css";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
   return (
@@ -26,7 +27,7 @@ export const Home = () => {
           goodness,Stimulates imagination ,Strengthens emotional resiliency and
           etc.
         </p>
-        <h3 className={styles.headingHomeTemplateThird}>And an H3 heading</h3>
+        <h3 className={styles.headingHomeTemplateThird}>Start make memories <Link className={styles.link} to="/publication">now</Link> </h3>
         <blockquote>
           {" "}
           Reading should not be presented to children as a duty or an
