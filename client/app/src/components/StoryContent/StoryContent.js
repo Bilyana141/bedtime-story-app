@@ -1,21 +1,50 @@
-import styles from './StoryContent.module.css'
-import { storyServiceFact } from '../../services/storyService'
-import { useEffect, useState } from 'react';
+import styles from './StoryContent.module.css';
+
+import { storyServiceFact } from '../../services/storyService';
+import { likeServiceFactory } from '../../services/likeService';
+import { AuthContext } from '../../context/AuthContext';
+
+import { useEffect, useState, useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useService } from '../../hooks/useService';
 import { FaArrowCircleLeft } from 'react-icons/fa';
 export const StoryContent =()=>{
+    const { token,userId }=useContext(AuthContext);
+    const likeService= likeServiceFactory(token);
     const { storyId } = useParams();
-    const [story,setStory]=useState([])
-    const storyService = useService(storyServiceFact)
+    const [story,setStory]=useState([]);
+    const [likes,setLikes]=useState([]);
+    const storyService = useService(storyServiceFact);
+    
+    useEffect(()=>{
+      likeService.getLikesForPost(storyId)
+      .then((result)=>{
+        setLikes(result)
+      })
+    },[storyId]);
+
+
     useEffect(()=>{
       storyService.getOne(storyId)
       .then((result)=>{
         setStory(result)
         
       })
-  
-    },[storyId])
+    },[storyId]);
+
+    const handleLikeClick = async () => {
+      console.log('Button is clicked');
+      try {
+        await likeService.addLike({ userId, postId:storyId });
+        const result = await likeService.getLikesForPost(storyId)
+
+        setLikes(result);
+        
+        
+      } catch (error) {
+        console.error(error);
+      }
+    }
     return(
         <div className={styles.story}>
         <section className={styles.storyContent}>
@@ -28,7 +57,7 @@ export const StoryContent =()=>{
           </div>
           
           <div className={styles.detailsButtons}>
-            <a className={styles.detailsButtonsLink}>Like</a>
+            <a className={styles.detailsButtonsLink} onClick={handleLikeClick}>Like ({likes ? likes.length : 0})</a>
             <a className={styles.detailsButtonsLink}>Dislike</a>
           </div>
         </section>
