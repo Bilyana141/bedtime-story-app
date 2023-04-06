@@ -14,12 +14,14 @@ export const StoryContent =()=>{
     const { storyId } = useParams();
     const [story,setStory]=useState([]);
     const [likes,setLikes]=useState([]);
+    const [dislike,setDislike]=useState([]);
     const storyService = useService(storyServiceFact);
     
     useEffect(()=>{
       likeService.getLikesForPost(storyId)
       .then((result)=>{
         setLikes(result)
+        setDislike(result)
       })
     },[storyId]);
 
@@ -37,14 +39,23 @@ export const StoryContent =()=>{
       try {
         await likeService.addLike({ userId, postId:storyId });
         const result = await likeService.getLikesForPost(storyId)
-
         setLikes(result);
+       
         
         
       } catch (error) {
         console.error(error);
       }
     }
+     const handleDislikeCLick=async()=>{
+      try{
+      await likeService.addDislike({ userId, postId:storyId });
+      const result = await likeService.getLikesForPost(storyId)
+        setDislike(result);
+      }catch(error){
+        console.error(error)
+      }
+     }
     return(
         <div className={styles.story}>
         <section className={styles.storyContent}>
@@ -58,7 +69,7 @@ export const StoryContent =()=>{
           
           <div className={styles.detailsButtons}>
             <a className={styles.detailsButtonsLink} onClick={handleLikeClick}>Like ({likes ? likes.length : 0})</a>
-            <a className={styles.detailsButtonsLink}>Dislike</a>
+            <a className={styles.detailsButtonsLink} onClick={handleDislikeCLick}>Dislike ({dislike ? dislike.length : 0}) </a>
           </div>
         </section>
       </div>
