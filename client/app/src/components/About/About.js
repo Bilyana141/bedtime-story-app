@@ -1,4 +1,7 @@
 import styles from './About.module.css'
+import { FaPhoneAlt } from 'react-icons/fa';
+import { FiMail } from 'react-icons/fi';
+import { BsInstagram } from 'react-icons/bs'
 export const About = ()=>{
     return(
         <div className="about">
@@ -13,11 +16,11 @@ export const About = ()=>{
           </h2>
           <ul >
             
-            <li className={styles.contactUsList}> +78 36985210</li>
+            <li className={styles.contactUsList}> <FaPhoneAlt/> +78 36985210</li>
            
-              <li className={styles.contactUsList}> onceuponatime@yahoo.com</li>
+              <li className={styles.contactUsList}> <FiMail/> onceuponatime@yahoo.com</li>
             
-            <li className={styles.contactUsList}>OnceUpon</li>
+            <li className={styles.contactUsList}> <BsInstagram/> OnceUpon</li>
           </ul>
         </section>
       </div>

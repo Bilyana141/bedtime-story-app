@@ -46,23 +46,18 @@ export const StoryContent =()=>{
             setLikesCount(result.length);
           })
         })
-       
-       
-        console.log('Likes:', likesCount);
-        
       } catch (error) {
         console.error(error);
       }
     }
 
-   
-    
+  
     return(
         <div className={styles.story}>
         <section className={styles.storyContent}>
           <h2 className={styles.storyHeadings}>{story.storyname}</h2>
-          <Link to={`/publication/${story._id}`} >
-            <FaArrowCircleLeft/>Back
+          <Link to={`/publication/${story._id}`} className={styles.back}>
+            <FaArrowCircleLeft className={styles.arrow}/> Back
           </Link>
           <div className={styles.storyTailContainer}>
           <p className={styles.storyTail}>{story.story}</p>

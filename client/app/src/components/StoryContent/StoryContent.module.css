@@ -44,4 +44,18 @@
           position: relative;
           left: auto;
       }
+      .arrow{
+        color:#808411;
+        font-size: 19px;
+      }
+      .back{
+        color:#808411;
+        font-size: 25px;
+        padding: 7px;
+        margin-right: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        font-family: 'Caveat',cursive;
+
+      }
       
