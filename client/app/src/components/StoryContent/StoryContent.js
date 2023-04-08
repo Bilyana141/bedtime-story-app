@@ -8,21 +8,22 @@ import { useEffect, useState, useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useService } from '../../hooks/useService';
 import { FaArrowCircleLeft } from 'react-icons/fa';
+
 export const StoryContent =()=>{
     const { token,userId }=useContext(AuthContext);
     const likeService= likeServiceFactory(token);
     const { storyId } = useParams();
     const [story,setStory]=useState([]);
-    const [likes,setLikes]=useState([]);
-    const [dislike,setDislike]=useState([]);
+    const [likesCount,setLikesCount]=useState(0);
+ 
     const storyService = useService(storyServiceFact);
     
     useEffect(()=>{
       likeService.getLikesForPost(storyId)
       .then((result)=>{
-        setLikes(result)
-        setDislike(result)
-      })
+        setLikesCount(result.length);
+      });
+        
     },[storyId]);
 
 
@@ -37,25 +38,25 @@ export const StoryContent =()=>{
     const handleLikeClick = async () => {
       console.log('Button is clicked');
       try {
-        await likeService.addLike({ userId, postId:storyId });
-        const result = await likeService.getLikesForPost(storyId)
-        setLikes(result);
+        console.log(storyId);
+        await likeService.addLike({ userId,storyId })
+        .then(()=>{
+          likeService.getLikesForPost(storyId)
+          .then((result)=>{
+            setLikesCount(result.length);
+          })
+        })
        
-        
+       
+        console.log('Likes:', likesCount);
         
       } catch (error) {
         console.error(error);
       }
     }
-     const handleDislikeCLick=async()=>{
-      try{
-      await likeService.addDislike({ userId, postId:storyId });
-      const result = await likeService.getLikesForPost(storyId)
-        setDislike(result);
-      }catch(error){
-        console.error(error)
-      }
-     }
+
+   
+    
     return(
         <div className={styles.story}>
         <section className={styles.storyContent}>
@@ -68,8 +69,8 @@ export const StoryContent =()=>{
           </div>
           
           <div className={styles.detailsButtons}>
-            <a className={styles.detailsButtonsLink} onClick={handleLikeClick}>Like ({likes ? likes.length : 0})</a>
-            <a className={styles.detailsButtonsLink} onClick={handleDislikeCLick}>Dislike ({dislike ? dislike.length : 0}) </a>
+            <a className={styles.detailsButtonsLink} onClick={handleLikeClick}>Like ({likesCount})</a>
+            
           </div>
         </section>
       </div>
