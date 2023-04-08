@@ -1,7 +1,10 @@
 import styles from "./Home.module.css";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 export const Home = () => {
+  const { isAuthenticated } = useContext(AuthContext);
   return (
     <div className={styles.container}>
       <div id={styles.text}>
@@ -27,7 +30,7 @@ export const Home = () => {
           goodness,Stimulates imagination ,Strengthens emotional resiliency and
           etc.
         </p>
-        <h3 className={styles.headingHomeTemplateThird}>Start make memories <Link className={styles.link} to="/publication">now</Link> </h3>
+        <h3 className={styles.headingHomeTemplateThird}>Start make memories {isAuthenticated && ( <Link className={styles.link} to="/publication">now</Link>)} </h3>
         <blockquote>
           {" "}
           Reading should not be presented to children as a duty or an
